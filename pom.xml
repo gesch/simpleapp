@@ -70,6 +70,75 @@
 		</dependency>
 	</dependencies>
 
+
+
+
+    <profiles>
+    <profile>
+        <!-- Generates the app docker image for execution -->
+        <id>app-docker-image</id>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.20.0</version>
+                    <configuration>
+                        <registry>swarm.azurecr.io</registry>
+                        <images>
+                            <image>
+                                <name>helloworld</name>
+                                <build>
+                                    <from>openjdk:8u121-jre-alpine</from>
+                                    <assembly>
+                                        <descriptorRef>project</descriptorRef>
+                                        <inline>
+                                            <fileSets>
+                                                <fileSet>
+                                                    <directory>${basedir}/target</directory>
+                                                    <includes>
+                                                        <include>simpleapp-0.0.1-SNAPSHOT.jar</include>
+                                                    </includes>
+                                                    <outputDirectory>/jar</outputDirectory>
+                                                </fileSet>
+                                            </fileSets>
+                                        </inline>
+                                    </assembly>
+                                </build>
+                            </image>
+
+                        </images>
+                        <authConfig>
+                                <username>swarm</username>
+                                <password>g/dKd/py+t==/+KNh=x+8Rm/emSiSKde</password>
+                        </authConfig>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>docker-build</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>docker-push</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+    </profiles>
+
+
+
+
+
 	<build>
 		<plugins>
 			<plugin>
