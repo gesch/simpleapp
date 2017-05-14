@@ -104,12 +104,15 @@
                                                     <includes>
                                                         <include>simpleapp-0.0.1-SNAPSHOT.jar</include>
                                                     </includes>
-                                                    <outputDirectory>/jar</outputDirectory>
+                                                    <outputDirectory>/</outputDirectory>
                                                 </fileSet>
                                             </fileSets>
                                         </inline>
                                     </assembly>
                                 </build>
+                                <entryPoint>
+                                    <shell>java -jar /app.jar</shell>
+                                </entryPoint>
                             </image>
 
                         </images>
