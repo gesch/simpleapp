@@ -89,6 +89,7 @@
                         <images>
                             <image>
                                 <name>simpleapp</name>
+                                <registry>swarm.azurecr.io</registry>
                                 <build>
                                     <from>openjdk:8u121-jre-alpine</from>
                                     <tags>
@@ -115,7 +116,7 @@
                         <authConfig>
                             <push>
                                 <username>swarm</username>
-                                <password>g/dKd/py+t==/+KNh=x+8Rm/emSiSKde</password>
+                                <password>QOL+9LrhalTBQi8sHoNgtriWOg/y7qd4</password>
                             </push>
                         </authConfig>
                     </configuration>
