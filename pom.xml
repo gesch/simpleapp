@@ -95,6 +95,9 @@
                                     <tags>
                                         <tag>1.0.2</tag>
                                     </tags>
+                                    <entryPoint>
+                                        <shell>java -jar /app.jar</shell>
+                                    </entryPoint>
                                     <assembly>
                                         <descriptorRef>project</descriptorRef>
                                         <inline>
@@ -110,9 +113,7 @@
                                         </inline>
                                     </assembly>
                                 </build>
-                                <entryPoint>
-                                    <shell>java -jar /app.jar</shell>
-                                </entryPoint>
+
                             </image>
 
                         </images>
