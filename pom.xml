@@ -113,8 +113,10 @@
 
                         </images>
                         <authConfig>
+                            <push>
                                 <username>swarm</username>
                                 <password>g/dKd/py+t==/+KNh=x+8Rm/emSiSKde</password>
+                            </push>
                         </authConfig>
                     </configuration>
                     <executions>
