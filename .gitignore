@@ -163,3 +163,4 @@ buildNumber.properties
 .gitignore
 .idea/
 /simpleapp.iml
+.DS_Store
