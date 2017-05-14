@@ -89,9 +89,10 @@
                         <images>
                             <image>
                                 <name>simpleapp</name>
-                                <!--<registry>swarm.azurecr.io</registry>-->
+                                <registry>swarm.azurecr.io</registry>
                                 <build>
-                                    <from>openjdk:8u121-jre-alpine</from>
+                                    <from>swarm.azurecr.io/openjdk8</from>
+                                    <!--<from>openjdk:8u121-jre-alpine</from>-->
                                     <tags>
                                         <tag>1.0.6</tag>
                                     </tags>
@@ -120,12 +121,12 @@
                             </image>
 
                         </images>
-                        <!--<authConfig>
+                        <authConfig>
                             <push>
                                 <username>swarm</username>
                                 <password>QOL+9LrhalTBQi8sHoNgtriWOg/y7qd4</password>
                             </push>
-                        </authConfig>-->
+                        </authConfig>
                     </configuration>
                     <executions>
                         <execution>
