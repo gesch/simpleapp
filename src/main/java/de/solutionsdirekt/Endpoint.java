@@ -43,10 +43,10 @@ public class Endpoint {
     public String message() {
         requests.inc();
         Summary.Timer requestTimer = requestLatency.startTimer();
-        HelloWorld hello = new HelloWorld("Hello ");
+        HelloWorld hello = new HelloWorld("Hello. ");
         String message = hello.getMessage() + this.service.message() + " ("+ hostname+")";
         double time =requestTimer.observeDuration();
-        log.info("endpoint accessed("+hostname+"): "+time);
+        log.info("endpoint accessed...(Host: "+hostname+"): "+time);
         return message;
 
 

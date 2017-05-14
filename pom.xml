@@ -24,7 +24,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
         <prometheus>0.0.21</prometheus>
-        <docker.image.prefix>solutionsdirekt</docker.image.prefix>
+        <docker.image.prefix>swarm.azurecr.io</docker.image.prefix>
+
 	</properties>
 
 	<dependencies>
@@ -87,9 +88,12 @@
                         <registry>swarm.azurecr.io</registry>
                         <images>
                             <image>
-                                <name>helloworld</name>
+                                <name>simpleapp</name>
                                 <build>
                                     <from>openjdk:8u121-jre-alpine</from>
+                                    <tags>
+                                        <tag>1.0.2</tag>
+                                    </tags>
                                     <assembly>
                                         <descriptorRef>project</descriptorRef>
                                         <inline>
@@ -150,6 +154,10 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.11</version>
                 <configuration>
+                    <imageTags>
+                        <imageTag>1.0.1</imageTag>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
                     <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
                     <exposes>8080</exposes>
                     <dockerDirectory>src/main/docker</dockerDirectory>
