@@ -131,14 +131,28 @@
                     <executions>
                         <execution>
                             <id>docker-build</id>
-                            <phase>package</phase>
+                            <phase>pre-integration-test</phase>
                             <goals>
                                 <goal>build</goal>
                             </goals>
                         </execution>
                         <execution>
+                            <id>docker-run</id>
+                            <phase>pre-integration-test</phase>
+                            <goals>
+                                <goal>start</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>docker-stop</id>
+                            <phase>post-integration-test</phase>
+                            <goals>
+                                <goal>stop</goal>
+                            </goals>
+                        </execution>
+                        <execution>
                             <id>docker-push</id>
-                            <phase>package</phase>
+                            <phase>deploy</phase>
                             <goals>
                                 <goal>push</goal>
                             </goals>
