@@ -37,7 +37,7 @@ public class SimpleAppApplicationTests {
 
         int responseCode = con.getResponseCode();
         System.out.println("\nSending 'GET' request to URL : " + url);
-        Assert.assertEquals("Response Code",404,responseCode);
+        Assert.assertEquals("Response Code",200,responseCode);
 
     }
 
