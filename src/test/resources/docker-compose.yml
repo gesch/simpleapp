@@ -2,7 +2,7 @@ version: '3'
 services:
   simpleapp:
     image: simpleapp:latest
-  mongo-docker-demo-tests:
+  simpleapp-tests:
     image: simpleapp-tests:latest
     links:
       - simpleapp
