@@ -11,6 +11,8 @@ public class SimpleAppApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
+		System.out.println("doing some testing");
 	}
 
 }
