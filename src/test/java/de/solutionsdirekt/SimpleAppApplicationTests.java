@@ -1,5 +1,6 @@
 package de.solutionsdirekt;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,14 +17,14 @@ import java.net.URL;
 public class SimpleAppApplicationTests {
 
 	@Test
-	public void contextLoads() {
+	public void contextLoads() throws IOException {
 
 		System.out.println("doing some testing");
 
         String url = "http://simpleapp:8080/hello";
 
         URL obj = null;
-        try {
+
             obj = new URL(url);
 
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -35,15 +36,8 @@ public class SimpleAppApplicationTests {
         con.setRequestProperty("User-Agent", "Mozilla/5.0");
 
         int responseCode = con.getResponseCode();
-            System.out.println("\nSending 'GET' request to URL : " + url);
-            System.out.println("Response Code : " + responseCode);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println("\nSending 'GET' request to URL : " + url);
+        Assert.assertEquals("Response Code",404,responseCode);
 
     }
 
