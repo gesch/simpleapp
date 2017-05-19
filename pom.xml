@@ -85,7 +85,7 @@
                     <artifactId>docker-maven-plugin</artifactId>
                     <version>0.20.0</version>
                     <configuration>
-                        <registry>swarm.azurecr.io</registry>
+                        <!-- <registry>swarm.azurecr.io</registry>-->
                         <images>
                             <image>
                                 <name>simpleapp</name>
