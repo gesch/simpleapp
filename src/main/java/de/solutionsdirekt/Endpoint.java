@@ -13,7 +13,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 @Component
-@Path("/hello")
+@Path("/hello2")
 public class Endpoint {
 
     Log log = LogFactory.getLog(Endpoint.class);
