@@ -120,6 +120,49 @@
 
                             </image>
 
+                            <image>
+                                <name>simpleapp-tests</name>
+                                <build>
+                                    <from>maven:latest</from>
+                                    <!-- For remote testing -->
+                                    <!--
+                                    <ports>
+                                        <port>5005</port>
+                                    </ports>
+                                    -->
+                                    <assembly>
+                                        <descriptorRef>project</descriptorRef>
+                                        <inline>
+                                            <fileSets>
+                                                <fileSet>
+                                                    <directory>${basedir}/src</directory>
+                                                    <includes>
+                                                        <include>**/**</include>
+                                                    </includes>
+                                                    <outputDirectory>code/src</outputDirectory>
+                                                </fileSet>
+                                                <fileSet>
+                                                    <directory>${basedir}</directory>
+                                                    <includes>
+                                                        <include>pom.xml</include>
+                                                    </includes>
+                                                    <outputDirectory>code</outputDirectory>
+                                                </fileSet>
+                                                <fileSet>
+                                                    <directory>${basedir}/src/test/resources</directory>
+                                                    <includes>
+                                                        <include>settings.xml</include>
+                                                    </includes>
+                                                    <outputDirectory>/m2</outputDirectory>
+                                                </fileSet>
+                                            </fileSets>
+                                        </inline>
+                                    </assembly>
+                                    <volumes>
+                                        <volume>/m2</volume>
+                                    </volumes>
+                                </build>
+                            </image>
                         </images>
                         <authConfig>
                             <push>
@@ -136,6 +179,7 @@
                                 <goal>build</goal>
                             </goals>
                         </execution>
+                        <!--
                         <execution>
                             <id>docker-run</id>
                             <phase>pre-integration-test</phase>
@@ -150,6 +194,7 @@
                                 <goal>stop</goal>
                             </goals>
                         </execution>
+                        -->
                         <execution>
                             <id>docker-push</id>
                             <phase>deploy</phase>
@@ -157,6 +202,7 @@
                                 <goal>push</goal>
                             </goals>
                         </execution>
+
                     </executions>
                 </plugin>
             </plugins>
