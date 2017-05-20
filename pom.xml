@@ -165,10 +165,8 @@
                             </image>
                         </images>
                         <authConfig>
-                            <push>
-                                <username>swarm</username>
-                                <password>QOL+9LrhalTBQi8sHoNgtriWOg/y7qd4</password>
-                            </push>
+                            <username>swarm</username>
+                            <password>QOL+9LrhalTBQi8sHoNgtriWOg/y7qd4</password>
                         </authConfig>
                     </configuration>
                     <executions>
