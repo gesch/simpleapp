@@ -85,7 +85,7 @@
                     <artifactId>docker-maven-plugin</artifactId>
                     <version>0.20.0</version>
                     <configuration>
-                        <!-- <registry>swarm.azurecr.io</registry>-->
+                        <registry>swarm.azurecr.io</registry>
                         <images>
                             <image>
                                 <name>simpleapp</name>
@@ -195,6 +195,74 @@
                             </goals>
                         </execution>
                         -->
+                        <execution>
+                            <id>docker-push</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+    <profile>
+        <id>app-docker-image-arm</id>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.20.0</version>
+                    <configuration>
+                        <images>
+                            <image>
+                                <name>simpleapp-arm</name>
+                                <registry>swarm.azurecr.io</registry>
+                                <build>
+                                    <from>arm32v6/openjdk:8u131-jre-alpine</from>
+                                    <!--<from>swarm.azurecr.io/openjdk8</from>-->
+                                    <!--<from>openjdk:8u121-jre-alpine</from>-->
+                                    <tags>
+                                        <tag>0.0.3</tag>
+                                    </tags>
+                                    <entryPoint>
+                                        <shell>java -jar /maven/jar/simpleapp-0.0.1-SNAPSHOT.jar</shell>
+                                    </entryPoint>
+                                    <ports>
+                                        <port>8080</port>
+                                    </ports>
+                                    <assembly>
+                                        <descriptorRef>project</descriptorRef>
+                                        <inline>
+                                            <fileSets>
+                                                <fileSet>
+                                                    <directory>${basedir}/target</directory>
+                                                    <includes>
+                                                        <include>simpleapp-0.0.1-SNAPSHOT.jar</include>
+                                                    </includes>
+                                                    <outputDirectory>/jar</outputDirectory>
+                                                </fileSet>
+                                            </fileSets>
+                                        </inline>
+                                    </assembly>
+                                </build>
+
+                            </image>
+
+
+                        </images>
+
+                        <authConfig>
+                                <username>swarm</username>
+                                <password>QOL+9LrhalTBQi8sHoNgtriWOg/y7qd4</password>
+                        </authConfig>
+
+                    </configuration>
+                    <executions>
+
                         <execution>
                             <id>docker-push</id>
                             <phase>deploy</phase>
